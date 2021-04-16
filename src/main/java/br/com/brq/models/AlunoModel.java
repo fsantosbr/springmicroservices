@@ -52,8 +52,8 @@ public class AlunoModel {
 	
 	@ManyToMany
 	@JoinTable (name = "aluno_materia",
-		joinColumns = @JoinColumn(name = "aluno_id"),
-		inverseJoinColumns = @JoinColumn(name = "materia_id"))
+		joinColumns = @JoinColumn(name = "aluno_id", updatable = false),
+		inverseJoinColumns = @JoinColumn(name = "materia_id", updatable = false))
 	private List<MateriaModel> materias = new ArrayList<>();
 	// @JoinTable can be in whatever side of a manyToMany relationship.
 	// @JoinTable needs first the table created to join 2 tables (many to many), then, it needs the column of one

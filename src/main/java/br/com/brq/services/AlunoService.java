@@ -11,13 +11,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import br.com.brq.dtos.AlunoDTO;
 import br.com.brq.exceptions.ObjetoNaoEncontradoException;
-import br.com.brq.models.AlunoMateriaModel;
 import br.com.brq.models.AlunoModel;
-import br.com.brq.repositories.AlunoMateriaRepository;
 import br.com.brq.repositories.AlunoRepository;
 import br.com.brq.repositories.EnderecoRepository;
 
@@ -27,8 +26,8 @@ public class AlunoService {
 	@Autowired
 	private AlunoRepository alunoRepository;
 	
-	@Autowired
-	private AlunoMateriaRepository alunoMateriaRepository;
+//	@Autowired
+//	private AlunoMateriaRepository alunoMateriaRepository;
 	
 	@Autowired
 	private EnderecoRepository enderecoRepository;
@@ -73,15 +72,17 @@ public class AlunoService {
 	}
 
 	
+	@Modifying
 	@Transactional
 	public void delete(Integer matricula) {
-		List<AlunoMateriaModel> list = this.alunoMateriaRepository.findByAlunoId(matricula);
-		
-		if(list.size() > 0) {
-			for (AlunoMateriaModel alunoMateriaModel : list) {
-				this.alunoMateriaRepository.deleteById(alunoMateriaModel.getId());
-			}
-		}
+//		List<AlunoMateriaModel> list = this.alunoMateriaRepository.findByAlunoId(matricula);
+//		
+//		if(list.size() > 0) {
+//			for (AlunoMateriaModel alunoMateriaModel : list) {
+//				this.alunoMateriaRepository.deleteById(alunoMateriaModel.getId());
+//				// o erro é aqui
+//			}
+//		}
 		
 		this.enderecoRepository.deleteByAlunoMatricula(matricula);
 		//this.enderecoRepository.deleteByAlunoObj(matricula);		
