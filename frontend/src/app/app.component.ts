@@ -23,4 +23,8 @@ export class AppComponent {
     this.nome = valor;
     // alert("Tecla pressionada");
   }
+
+  public receiveEmitirEvento(e){
+    console.log(e);
+  }
 }

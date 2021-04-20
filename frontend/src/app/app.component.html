@@ -1,8 +1,10 @@
 <h1>Hey</h1>
 
 <!-- interpolação para fazer bind entre os html, scss, spec.ts e ts do componente -->
-<!-- chama variável -->
+<!-- chama variável  {{title}}-->
 {{title}}
+<!-- Podemos usar getters aqui. -->
+
 
 <!-- chamando um método  -->
 {{somar()}}
@@ -22,3 +24,27 @@
 <input [(ngModel)]="nome"  />
 
 <app-primeiro></app-primeiro>
+
+
+<app-home 
+  [tituloFilho]="title"
+  (emitirEvento)="receiveEmitirEvento($event)"
+
+></app-home>
+
+
+<!-- 
+  [tituloFilho]="title" 
+  Aqui, estamos usando o binding property.
+  Estamos passando o valor da variável title do app.component para o home.component.
+  Porém, precisa alterar lá também
+  Do pai para o filho
+-->
+
+<!-- 
+  (emitirEvento)="receiveEmitirEvento($event)"
+  Aqui estamos usando o event binding.
+  Estamos pegamos o evento "emitirEvento" criado no modulo filho com a anotação @Output()
+  que está no módulo filho 'receiveEmitirEvento'
+  Do filho para o pai
+ -->
