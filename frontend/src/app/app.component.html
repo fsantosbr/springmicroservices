@@ -13,15 +13,15 @@
   {{somar()}}
 </div>
 
-<button (click)="onMeuBotaoClick()" [disabled]="isDesabilitado">Meu botao</button>
+<button class="btn btn-secondary" (click)="onMeuBotaoClick()" [disabled]="isDesabilitado">Meu botao</button>
 <br>
-<input (keyup)="capturarDados($event.target.value)"/>
+<input class="form-control" (keyup)="capturarDados($event.target.value)"/>
 
-<p> {{nome }}</p>
+<p> {{nomeTeste }}</p>
 
 <br>
 
-<input [(ngModel)]="nome"  />
+<input [(ngModel)]="nomeTeste"  />
 
 <app-primeiro></app-primeiro>
 
@@ -48,3 +48,29 @@
   que está no módulo filho 'receiveEmitirEvento'
   Do filho para o pai
  -->
+
+ <form [formGroup]="meuForm" (submit)="onEnviarFormClick()">
+  <div class="form-group">
+    <label for="nome">Nome: </label>
+    <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" formControlName="nome">
+    <small id="nomeHelp" class="form-text text-muted">We'll share your name. Period.</small>
+  </div>
+
+ <app-field-error
+  [isShow]="isValid('nome')"
+  [messageError]="'Erro ao preencher nome do aluno'"
+  > </app-field-error>
+
+  <div class="form-group">
+    <label for="turma">Turma</label>
+    <input type="text" class="form-control" id="inputTurma" formControlName="turma">
+  </div>
+  
+  <app-field-error
+  [isShow]="isValid('turma')"
+  [messageError]="'Erro ao preencher turma do aluno'"
+  > </app-field-error>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!meuForm.valid">Enviar</button>
+
+</form>

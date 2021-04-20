@@ -18,5 +18,8 @@ export class AlunoService {
     return this.httpService.get("http://localhost:8081/alunos/" + matricula);
   }
 
+  public save(newAluno){
+    return this.httpService.post("http://localhost:8081/alunos/", newAluno);
+  }
 
 }
