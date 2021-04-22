@@ -9,6 +9,7 @@ export class FieldErrorComponent implements OnInit {
 
   @Input()
   public isShow : boolean = false;
+  // Estamos pegando dados do pai e passando pro filho. Esse módulo é o filho, então essas variáveis vão receber o valor.
 
   @Input()
   public messageError : string;

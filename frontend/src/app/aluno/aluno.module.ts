@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
+import { SharedModule } from '../shared/shared.module';
+import { AlunoRoutingModule } from './aluno-routing.module';
+import { AlunoFormComponent } from './aluno-form/aluno-form.component';
+import { AlunoListComponent } from './aluno-list/aluno-list.component';
 
 
 
@@ -10,11 +14,14 @@ import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    AlunoDetalheComponent
+    AlunoDetalheComponent,
+    AlunoFormComponent,
+    AlunoListComponent
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    SharedModule,
+    AlunoRoutingModule
   ],
   exports: [
     HomeComponent    

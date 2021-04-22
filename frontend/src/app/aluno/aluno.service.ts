@@ -22,4 +22,8 @@ export class AlunoService {
     return this.httpService.post("http://localhost:8081/alunos/", newAluno);
   }
 
+  public delete(matricula : number){
+    return this.httpService.delete("http://localhost:8081/alunos/" + matricula);
+  }
+
 }

@@ -1,13 +1,27 @@
-<h1>Hey</h1>
+<app-navbar>
+  
+</app-navbar>
+
+
+<div class="container-fluid">
+  -------------------------------------------------------
+  <br>
+  <router-outlet></router-outlet>
+  <br>
+  --------------------------------------------------------
+</div>
+
+
+
 
 <!-- interpolação para fazer bind entre os html, scss, spec.ts e ts do componente -->
 <!-- chama variável  {{title}}-->
-{{title}}
-<!-- Podemos usar getters aqui. -->
 
+<!-- Podemos usar getters aqui. -->
+<!-- {{title}} -->
 
 <!-- chamando um método  -->
-{{somar()}}
+<!-- {{somar()}}
 
 <div class="azul">
   {{somar()}}
@@ -23,14 +37,14 @@
 
 <input [(ngModel)]="nomeTeste"  />
 
-<app-primeiro></app-primeiro>
+<app-primeiro></app-primeiro> -->
 
 
-<app-home 
+<!-- <app-home 
   [tituloFilho]="title"
   (emitirEvento)="receiveEmitirEvento($event)"
-
-></app-home>
+  [alunos]="alunosAtualizados"
+></app-home> -->
 
 
 <!-- 
@@ -49,7 +63,7 @@
   Do filho para o pai
  -->
 
- <form [formGroup]="meuForm" (submit)="onEnviarFormClick()">
+ <!-- <form [formGroup]="meuForm" (submit)="onEnviarFormClick()">
   <div class="form-group">
     <label for="nome">Nome: </label>
     <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" formControlName="nome">
@@ -61,6 +75,10 @@
   [messageError]="'Erro ao preencher nome do aluno'"
   > </app-field-error>
 
+  <app-field-debug
+    [valuedFieldDebug]="meuForm.get('nome')"
+  ></app-field-debug>
+
   <div class="form-group">
     <label for="turma">Turma</label>
     <input type="text" class="form-control" id="inputTurma" formControlName="turma">
@@ -71,6 +89,25 @@
   [messageError]="'Erro ao preencher turma do aluno'"
   > </app-field-error>
 
+  <app-field-debug
+  [valuedFieldDebug]="meuForm.get('turma')"
+></app-field-debug>
+
+
+  
   <button type="submit" class="btn btn-primary" [disabled]="!meuForm.valid">Enviar</button>
 
-</form>
+</form> -->
+
+
+<!-- 
+   <app-field-error
+  [isShow]="isValid('turma')"
+  [messageError]="'Erro ao preencher turma do aluno'"
+  > </app-field-error>
+  
+  Nota1: isShow é uma variável do filho que vai receber valor do pai.
+Nota2: "isValid()" é uma função do pai que vai passar o valor para o filho.
+Nota3: messageError é uma variável do filho que vai receber um valor.
+Nota4: "'Erro...'" estamos passando uma string aqui. Usamos a aspa simples dentro da dupla. Caso contrário, seria uma variável.
+ -->
