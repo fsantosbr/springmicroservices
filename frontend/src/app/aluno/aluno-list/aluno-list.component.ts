@@ -15,13 +15,7 @@ export class AlunoListComponent implements OnInit {
   // Injetamos um serviço de AlunoService que lá dentro usa o HttpService 
   constructor( private alunoService : AlunoService )    
   { 
-      this.alunoService.getAll()
-      .subscribe(
-        (data) => {
-          console.log(data);
-          this.alunos = data;
-        }
-      );
+      this.getAll();
       // só entra na function quando o status é da família 200.
       /*
     * arrow function ---- =>
@@ -33,6 +27,15 @@ export class AlunoListComponent implements OnInit {
     */
   }
 
+  getAll(){
+    this.alunoService.getAll()
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.alunos = data;
+        }
+      );
+  }
 
   onAlunoClick(matricula : number){    
     this.alunoService.getByMatricula(matricula)
@@ -53,14 +56,7 @@ export class AlunoListComponent implements OnInit {
           console.log(data);
 
           //atualizando a lista
-          this.alunoService.getAll()
-          .subscribe(
-            (alunosAtualizados) => {
-              console.log(alunosAtualizados);
-              this.alunos = alunosAtualizados;
-            }
-          );
-
+          this.getAll();
 
         }
       )    

@@ -8,16 +8,20 @@
         <th>Matrícula</th>
         <th>Nome</th>
         <th>Turma</th>  
-        <th>Ação detalhe</th>
-        <th>Ação delete</th>
+        <th>Ação</th>
+      
     </tr>
 
     <tr *ngFor="let a of alunos" >
         <td> {{ a?.matricula }} </td>
         <td>{{ a?.nome }}</td>
         <td>{{ a?.turma }}</td>
-        <td><button class="btn btn-primary" (click)="onAlunoClick(a.matricula)">Ver Detalhe</button></td>
-        <td><button class="btn btn-primary" (click)="onAlunoDelete(a.matricula)">Deletar</button></td>
+        <td>
+            <button class="btn btn-primary mr-2" (click)="onAlunoClick(a.matricula)">Ver Detalhe</button>
+            <a class="btn btn-warning mr-2" [routerLink]="['/aluno-form', a.matricula]">Editar</a>
+            <button class="btn btn-danger" (click)="onAlunoDelete(a.matricula)">Deletar</button>
+        </td>
+        
     </tr>
 
 </table>
