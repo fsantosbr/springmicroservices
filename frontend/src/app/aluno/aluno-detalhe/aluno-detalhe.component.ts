@@ -10,9 +10,7 @@ export class AlunoDetalheComponent implements OnInit {
 
   @Input()
   public alunoFilho : any;
-  // variável que será usada para passar dados do pai para o filho. Pai: home.component.ts
-  // Uma variável no Pai passará o valor para esta.
-  
+   
  
   constructor() {
   

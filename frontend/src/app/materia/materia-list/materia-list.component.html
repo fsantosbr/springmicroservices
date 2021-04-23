@@ -1,0 +1,35 @@
+<div class="row float-right mb-3 mt-3">
+    <a class="btn btn-success" [routerLink]="['/materias-form']" > Nova Materia </a>
+</div>
+
+<div class="fluid-container">
+    <table *ngIf="materias?.length > 1" class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Professor</th>
+            <th>Ação</th>
+        
+        </tr>
+
+        <tr *ngFor="let materia of materias" >
+            <td> {{ materia?.id }} </td>
+            <td> {{ materia?.nome }} </td>
+            <td>{{ materia?.professor }}</td>
+            
+            <td>
+                <button class="btn btn-primary mr-2" (click)="onVerDetalheMateria(materia.id)">Ver Detalhe</button>
+                <a class="btn btn-warning mr-2" [routerLink]="['/materias-form', materia.id]">Editar</a>
+                <button class="btn btn-danger" (click)="onDeletarMateria(materia.id)">Deletar</button>
+            </td>
+            
+        </tr>
+
+    </table>
+</div>
+<br>
+
+<h4>Detalhe da materia será exibido abaixo: </h4>
+<app-materia-detalhe
+    [detalheMateriaFilho]="detalheMateriaPai"    
+></app-materia-detalhe>

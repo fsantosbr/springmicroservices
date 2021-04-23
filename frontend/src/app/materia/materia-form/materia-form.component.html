@@ -1,0 +1,35 @@
+<form [formGroup]="meuFormMateria" (submit)="onClickEnviarFormMateria()">
+    
+    <div class="form-group">
+      <label for="nome">Nome: </label>
+      <input type="text" class="form-control" aria-describedby="nomeHelp" formControlName="nome">
+      <small class="form-text text-muted">We'll share this name. Period.</small>
+    </div>
+  
+   <app-field-error
+    [isShow]="isValid('nome')"
+    [messageError]="'Erro ao preencher nome da Matéria'"
+    > </app-field-error>
+  
+    <app-field-debug
+      [valueFieldDebug]="meuFormMateria.get('nome')"
+    ></app-field-debug>
+  
+    <div class="form-group">
+      <label for="turma">Professor</label>
+      <input type="text" class="form-control" formControlName="professor">
+    </div>
+    
+    <app-field-error
+    [isShow]="isValid('professor')"
+    [messageError]="'Erro ao preencher nome do professor'"
+    > </app-field-error>
+  
+    <app-field-debug
+        [valueFieldDebug]="meuFormMateria.get('professor')"
+    ></app-field-debug> 
+     
+    <button type="submit" class="btn btn-primary" [disabled]="!meuFormMateria.valid">Enviar</button>
+  
+  </form>
+

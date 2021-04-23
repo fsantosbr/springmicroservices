@@ -40,10 +40,10 @@ export class AlunoListComponent implements OnInit {
   onAlunoClick(matricula : number){    
     this.alunoService.getByMatricula(matricula)
     .subscribe(
-      (data) => {
-        console.log(data);
+      (data1) => {
+        console.log(data1);
         //totally unecessary
-        this.alunoPai = data;
+        this.alunoPai = data1;
 
       }
     )

@@ -1,11 +1,35 @@
-<p>aluno-detalhe works!</p>
+<div class="m-0 p-0">
 
-<div>
-    {{alunoFilho?.matricula}}
-    <br>
-    {{alunoFilho?.nome}}
-    <br>
-    {{alunoFilho?.turma}}
+    <small class="form-text text-muted"> Matrícula: {{alunoFilho?.matricula}}</small>
+    <small class="form-text text-muted">Nome: {{alunoFilho?.nome}}</small>
+    <small class="form-text text-muted">Turma: {{alunoFilho?.turma}}</small>
+
+    <div *ngIf="alunoFilho?.endereco" class="m-0 p-0">
+        <small class="form-text text-muted">-------------</small>
+        <small class="form-text text-muted">Endereço:</small>
+        <small class="form-text text-muted">--> Logradouro: {{alunoFilho?.endereco?.logradouro}}</small>
+        <small class="form-text text-muted">--> Número: {{alunoFilho?.endereco?.numero}}</small>
+        <small class="form-text text-muted">--> CEP: {{alunoFilho?.endereco?.cep}}</small>
+    </div>
+    
+    <div *ngIf="alunoFilho?.escola" class="m-0 p-0">
+        <small class="form-text text-muted">-------------</small>
+        <small class="form-text text-muted">Escola:</small>
+
+        <small class="form-text text-muted">--> Nome: {{alunoFilho?.escola?.nome}}</small>
+        <small class="form-text text-muted">--> Tipo Escola: {{alunoFilho?.escola?.tipoEscola}}</small>
+        <small class="form-text text-muted">--> Qde Salas: {{alunoFilho?.escola?.numeroSalas}}</small>
+    </div>
+    
+    <div *ngIf="alunoFilho?.escola" class="m-0 p-0">
+        <small class="form-text text-muted">-------------</small>
+        <small class="form-text text-muted">Materias:</small>
+
+        <small class="form-text text-muted">--> Nome: {{alunoFilho?.materias?.nome}}</small>
+        <small class="form-text text-muted">--> Professor: {{alunoFilho?.materias?.professor}}</small>
+    </div>
+    
+   
 </div>
 
 

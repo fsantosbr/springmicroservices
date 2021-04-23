@@ -1,40 +1,46 @@
-<p>aluno-form works!</p>
 
-<form [formGroup]="meuForm" (submit)="onEnviarFormClick()">
-    <div class="form-group">
-      <label for="nome">Nome: </label>
-      <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" formControlName="nome">
-      <small id="nomeHelp" class="form-text text-muted">We'll share your name. Period.</small>
-    </div>
-  
-   <app-field-error
-    [isShow]="isValid('nome')"
-    [messageError]="'Erro ao preencher nome do aluno'"
-    > </app-field-error>
-  
-    <app-field-debug
-      [valueFieldDebug]="meuForm.get('nome')"
-    ></app-field-debug>
-  
-    <div class="form-group">
-      <label for="turma">Turma</label>
-      <input type="text" class="form-control" id="inputTurma" formControlName="turma">
-    </div>
-    
-    <app-field-error
-    [isShow]="isValid('turma')"
-    [messageError]="'Erro ao preencher turma do aluno'"
-    > </app-field-error>
-  
-    <app-field-debug
-    [valueFieldDebug]="meuForm.get('turma')"
-  ></app-field-debug>
-  
-  
-   
-  
-  
-    <!-- Not sure if meuForm.get() works -->
-    <button type="submit" class="btn btn-primary" [disabled]="!meuForm.valid">Enviar</button>
-  
-  </form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 border shadow ">
+
+      <form [formGroup]="meuForm" (submit)="onEnviarFormClick()" class=" mb-3">
+        <div class="form-group mt-2">
+          <label for="nome">Nome: </label>
+          <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" formControlName="nome">
+          <small id="nomeHelp" class="form-text text-muted">We'll share your name. Period.</small>
+        </div>
+      
+       <app-field-error
+        [isShow]="isValid('nome')"
+        [messageError]="'Erro ao preencher nome do aluno'"
+        > </app-field-error>
+      
+        <app-field-debug
+          [valueFieldDebug]="meuForm.get('nome')"
+        ></app-field-debug>
+      
+        <div class="form-group">
+          <label for="turma">Turma:</label>
+          <input type="text" class="form-control" id="inputTurma" formControlName="turma">
+        </div>
+        
+        <app-field-error
+        [isShow]="isValid('turma')"
+        [messageError]="'Erro ao preencher turma do aluno'"
+        > </app-field-error>
+      
+        <app-field-debug
+        [valueFieldDebug]="meuForm.get('turma')"
+      ></app-field-debug>
+      
+        <!-- Not sure if meuForm.get() works -->
+        <button type="submit" class="btn btn-primary mt-2 container" [disabled]="!meuForm.valid">Enviar</button>
+      
+      </form>
+
+    </div>  
+  </div>
+</div>
+
+
+
