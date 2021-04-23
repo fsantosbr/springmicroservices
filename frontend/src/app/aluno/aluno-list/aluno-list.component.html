@@ -2,9 +2,10 @@
      <div class="row">
          <div class="col-md-10">
              <div class="float-right m-2">
-                <a class="btn btn-success" [routerLink]="['/aluno-form']" > Novo Aluno </a>
+                <a class="btn btn-success" [routerLink]="['alunos/aluno-form']" > Novo Aluno </a>
              </div>
          </div>
+         
 
          <div class="col-md-10 mt-0 pt-0 m-1 p-1 shadow">
             <table *ngIf="alunos?.length > 1" class="table">
@@ -22,7 +23,35 @@
                     <td>{{ a?.turma }}</td>
                     <td>
                         <button class="btn btn-primary mr-2" (click)="onAlunoClick(a.matricula)">Detalhe</button>
-                        <a class="btn btn-warning mr-2" [routerLink]="['/aluno-form', a.matricula]">Editar</a>
+                        <a class="btn btn-warning mr-2" [routerLink]="['/alunos/aluno-form', a.matricula]">Editar</a>
+                        <button class="btn btn-danger" (click)="onAlunoDelete(a.matricula)">Deletar</button>
+                    </td>
+                    
+                </tr>
+        
+            </table>
+
+         </div>
+
+
+         <!-- pagination -->
+         <div class="col-md-10 mt-0 pt-0 m-1 p-1 shadow">
+            <table *ngIf="alunos?.length > 1" class="table">
+                <tr>
+                    <th>Matrícula</th>
+                    <th>Nome</th>
+                    <th>Turma</th>  
+                    <th>Ação</th>
+                
+                </tr>
+        
+                <tr *ngFor="let a of alunos" >
+                    <td> {{ a?.matricula }} </td>
+                    <td>{{ a?.nome }}</td>
+                    <td>{{ a?.turma }}</td>
+                    <td>
+                        <button class="btn btn-primary mr-2" (click)="onAlunoClick(a.matricula)">Detalhe</button>
+                        <a class="btn btn-warning mr-2" [routerLink]="['/alunos/aluno-form', a.matricula]">Editar</a>
                         <button class="btn btn-danger" (click)="onAlunoDelete(a.matricula)">Deletar</button>
                     </td>
                     

@@ -12,22 +12,47 @@ export class MateriaListComponent implements OnInit {
 
   detalheMateriaPai : any;
 
+  // Beginning of the variables to manage pagination
+
+  public pageSize : number = 1;
+  public total : number = 0 ;
+
+  // page variable used for NgxPagination
+  public paginaNgx : number = 1 ;
+  
+  // page variable used for the backend application because pagination no Spring starts with '0'.
+  public paginaRest : number = this.paginaNgx -1;
+
+  // End of the variables to manage pagination
+
+
   constructor(private materiaService : MateriaService) {
-    this.getAll();
+    this.getPagination();
    }
 
   ngOnInit(): void {
   }
 
-  getAll(){
-    this.materiaService.getAll()
+  private getPagination(){
+    this.materiaService.getPagination(this.paginaRest, this.pageSize)
       .subscribe(
-        (storedMaterias) => {
+        (paginationData : any) => {
           // this console is only for debbuging
-          console.log(storedMaterias);
-          this.materias = storedMaterias;
+          console.log("Dados da paginação:");
+          console.log(paginationData);
+
+          // The data from pagination are inside of a content
+          this.materias = paginationData.content;
+          this.total = paginationData.totalElements;
+          
         }
       );
+  }
+
+  public pageChanged(evento){   
+    this.paginaNgx = evento;
+    this.paginaRest = this.paginaNgx - 1;
+    this.getPagination();
   }
 
   onVerDetalheMateria(materiaId : number){
@@ -49,7 +74,8 @@ export class MateriaListComponent implements OnInit {
           // curious to see what's inside of this variable 
           console.log(data);
           
-          this.getAll();
+          this.getPagination();
+          // erro - ao deletar 
         }
       );
   }

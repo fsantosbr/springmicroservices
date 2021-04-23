@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MateriaFormComponent } from './materia-form/materia-form.component';
 import { MateriaListComponent } from './materia-list/materia-list.component';
 import { MateriaDetalheComponent } from './materia-detalhe/materia-detalhe.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -17,8 +18,11 @@ import { MateriaDetalheComponent } from './materia-detalhe/materia-detalhe.compo
   imports: [
     CommonModule,
     MateriaRoutingModule,
+    
 
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
+    
   ]
 })
 export class MateriaModule { }

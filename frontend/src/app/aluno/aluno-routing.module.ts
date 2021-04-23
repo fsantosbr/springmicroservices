@@ -4,7 +4,7 @@ import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { AlunoListComponent } from './aluno-list/aluno-list.component';
 
 const routes: Routes = [
- { path: 'alunos', component : AlunoListComponent },
+ { path: '', component : AlunoListComponent },
  { path: 'aluno-form', component : AlunoFormComponent},
  { path: 'aluno-form/:id', component : AlunoFormComponent}
 

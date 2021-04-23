@@ -34,4 +34,15 @@ export class MateriaService {
     return this.httpService.delete("http://localhost:8081/materias/"+ materiaId);
   }
 
+  public getPagination(pagina, registros = 2){
+    console.log("pag " + pagina + ". registros " + registros);
+    return this.httpService.get("http://localhost:8081/materias/paginacao/?pagina=" + pagina + "&registros=" + registros);
+    //http://localhost:8081/materias/paginacao/?pagina=1&registros=2
+    //http://localhost:8081/materias/paginacao/?pagina=1&registros=1
+  }
+
+  // public getaPagination(pagina, registrosPorPagina = 2){
+  //   return this.httpService.get(`${this.uri}/paginacao?pagina=${pagina}&registros=${registrosPorPagina}`);
+  // }
+
 }

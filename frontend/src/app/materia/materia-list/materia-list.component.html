@@ -1,9 +1,10 @@
 <div class="row float-right mb-3 mt-3">
-    <a class="btn btn-success" [routerLink]="['/materias-form']" > Nova Materia </a>
+    <a class="btn btn-success" [routerLink]="['/materias/materias-form']" > Nova Materia </a>
 </div>
 
 <div class="fluid-container">
-    <table *ngIf="materias?.length > 1" class="table">
+    <!-- pagination -->
+    <table class="table">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -12,20 +13,40 @@
         
         </tr>
 
-        <tr *ngFor="let materia of materias" >
+        <tr  *ngFor="let materia of materias | paginate: { id: 'paginacao', itemsPerPage: pageSize, currentPage: paginaNgx, totalItems: total }">
             <td> {{ materia?.id }} </td>
             <td> {{ materia?.nome }} </td>
             <td>{{ materia?.professor }}</td>
             
             <td>
                 <button class="btn btn-primary mr-2" (click)="onVerDetalheMateria(materia.id)">Ver Detalhe</button>
-                <a class="btn btn-warning mr-2" [routerLink]="['/materias-form', materia.id]">Editar</a>
+                <a class="btn btn-warning mr-2" [routerLink]="['/materias/materias-form', materia.id]">Editar</a>
                 <button class="btn btn-danger" (click)="onDeletarMateria(materia.id)">Deletar</button>
             </td>
             
         </tr>
 
     </table>
+
+    <div class="row justify-content-md-center">
+
+        <pagination-controls  id="paginacao"
+                          (pageChange)="pageChanged($event)"
+                          (pageBoundsCorrection)="pageChanged($event)"
+                          maxSize="9"
+                          directionLinks="true"
+                          autoHide="true"
+                          responsive="true"
+                          previousLabel="Anterior"
+                          nextLabel="Próximo"
+                          screenReaderPaginationLabel="Pagination"
+                          screenReaderPageLabel="page"
+                          screenReaderCurrentLabel="You're on page">
+        </pagination-controls>
+    
+    </div>
+
+
 </div>
 <br>
 
