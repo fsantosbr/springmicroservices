@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FieldDebugComponent } from './field-debug/field-debug.component';
 import { RouterModule } from '@angular/router';
+import { FilterResourceComponent } from './filter-resource/filter-resource.component';
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     FieldErrorComponent,
     NavbarComponent,
-    FieldDebugComponent
+    FieldDebugComponent,
+    FilterResourceComponent
   ],
 
   imports: [
@@ -29,6 +31,7 @@ import { RouterModule } from '@angular/router';
     FieldErrorComponent,
     NavbarComponent,
     FieldDebugComponent,
+    FilterResourceComponent,
 
     FormsModule,
     ReactiveFormsModule,

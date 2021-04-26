@@ -2,6 +2,8 @@ package br.com.brq.repositories;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +13,8 @@ import br.com.brq.models.MateriaModel;
 public interface MateriaRepository extends JpaRepository<MateriaModel, Integer>{
 	
 	List<MateriaModel> findByNomeContains(String nomeMat);	
+	
+	Page<MateriaModel> findAllByNomeContains(String nome, Pageable page);
 
 	/*
 	 * - findByNome = It creates a query that find an object using the field Nome

@@ -1,6 +1,51 @@
-<div class="row float-right mb-3 mt-3">
+<div class="row float-right mb-3 mt-3 mr-3">
     <a class="btn btn-success" [routerLink]="['/materias/materias-form']" > Nova Materia </a>
 </div>
+
+<div class="border float-left mb-3 mt-3 ml-3" style="width: 750px;">
+
+    <div class="row mb-0 mt-0">
+        <div class="col-md-3 mb-0 mt-1 ml-3">
+            <small>Resultado por página</small>
+        </div>
+        <div class="col-md-3 mb-0 mt-1">
+            <small>Nome que contenha</small>
+        </div>
+    </div>
+
+    <div class="row">        
+        <div class="col-md-3 mb-1 mt-2 ml-3">           
+            <select [(ngModel)]="pageSizeUpdated" style="width:100px; height: 31px;">
+                <option value=3 selected>3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20" disabled>20</option>
+            </select>
+        </div>
+
+        <div class="col-md-3 mb-1 mt-2">
+            <input type="text" placeholder="Pesquisar" [(ngModel)]="nomeMateriaContains" />
+        </div>
+
+        <div class="col-md-3 mb-1 mt-1 ml-4">
+            <button class="btn btn-primary" (click)="onClickApplyFilter()"> Aplicar </button>
+        </div>
+    </div>    
+        
+
+        
+
+
+   
+
+    <!-- <button class="btn btn-primary" (click)="onClickRefreshRegisterPerPage()"> Aplicar </button> -->
+</div>
+<!-- <div class="row justify-content-md-center mb-3 mt-3">
+    <input type="text" placeholder="Pesquisar" [(ngModel)]="nomeMateriaContains" />
+    <button class="btn btn-primary" (click)="getPagination()"> Pesquisar </button>
+</div> -->
+
 
 <div class="fluid-container">
     <!-- pagination -->

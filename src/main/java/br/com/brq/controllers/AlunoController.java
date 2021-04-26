@@ -3,6 +3,7 @@ package br.com.brq.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -48,6 +49,21 @@ public class AlunoController {
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
+	
+	@GetMapping("paginacao")
+	public ResponseEntity<Page<AlunoDTO>> paginacao(
+				@RequestParam(name="pagina", defaultValue = "0") int pagina,
+				@RequestParam(name="registros", defaultValue = "10") int registros
+			) {
+		
+		Page<AlunoDTO> pageDTO = this.alunoService.paginacao(pagina, registros);
+		
+		return  ResponseEntity.ok().body(pageDTO);
+		/*
+		 * Always return a ResponseEntity<T>
+		 * 
+		 */
+	}
 	
 	@PostMapping("")
 	public ResponseEntity<AlunoDTO> save(@RequestBody AlunoDTO novoAluno) {

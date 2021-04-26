@@ -19,7 +19,7 @@ public class AlunoDTO {
 	private String nome;
 	
 	@NotNull
-	private String turma;	
+	private String turma;
 	
 	private EnderecoDTO endereco;
 	private EscolaDTO escola;

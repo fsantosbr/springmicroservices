@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.brq.dtos.MateriaDTO;
@@ -85,10 +86,20 @@ public class MateriaService {
 	}
 	
 	
-	public Page<MateriaDTO> paginacao(int pagina, int registros) {
-		PageRequest pageRequest = PageRequest.of(pagina, registros);
+	public Page<MateriaDTO> paginacao(int pagina, int registros, String procurarMateria) {		
+
+		Page<MateriaModel> pageModel;
 		
-		Page<MateriaModel> pageModel = this.materiaRepository.findAll(pageRequest);
+		if (procurarMateria.contentEquals("nenhumaMateriaSelecionada")) {
+			PageRequest pageRequest = PageRequest.of(pagina, registros);
+			pageModel = this.materiaRepository.findAll(pageRequest);
+		}
+		else {
+			Pageable pageRequest = PageRequest.of(pagina, registros);
+			pageModel = this.materiaRepository.findAllByNomeContains(procurarMateria, pageRequest);
+		}
+				
+		System.out.println(pageModel);		
 		
 		Page<MateriaDTO> pageDTO = pageModel.map(
 				new Function<MateriaModel, MateriaDTO>(){

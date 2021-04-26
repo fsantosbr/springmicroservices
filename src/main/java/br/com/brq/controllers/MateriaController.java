@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,6 +23,7 @@ import br.com.brq.services.MateriaService;
 
 @RestController
 @RequestMapping("materias")
+@CrossOrigin(origins = "*")
 public class MateriaController {
 
 	@Autowired
@@ -55,11 +57,11 @@ public class MateriaController {
 	@GetMapping("paginacao")
 	public ResponseEntity<Page<MateriaDTO>> paginacao(
 				@RequestParam(name="pagina", defaultValue = "0") int pagina,
-				@RequestParam(name="registros", defaultValue = "10") int registros
-			) {
+				@RequestParam(name="registros", defaultValue = "10") int registros,
+				@RequestParam(name="procurar", defaultValue = "nenhumaMateriaSelecionada") String procurarMateria
+			) {		
 		
-		Page<MateriaDTO> pageDTO = this.materiaService.paginacao(pagina, registros);
-		
+		Page<MateriaDTO> pageDTO = this.materiaService.paginacao(pagina, registros, procurarMateria);		
 		return  ResponseEntity.ok().body(pageDTO);
 		/*
 		 * Always return a ResponseEntity<T>

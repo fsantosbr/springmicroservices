@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MateriaService } from '../materia.service';
 
 @Component({
@@ -12,10 +12,16 @@ export class MateriaListComponent implements OnInit {
 
   detalheMateriaPai : any;
 
+  nomeMateriaContains : string;
+ 
   // Beginning of the variables to manage pagination
 
-  public pageSize : number = 1;
-  public total : number = 0 ;
+  
+  public pageSize : number = 3;
+
+  public pageSizeUpdated : number = 3;
+
+  public total : number = 0;
 
   // page variable used for NgxPagination
   public paginaNgx : number = 1 ;
@@ -33,13 +39,14 @@ export class MateriaListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private getPagination(){
-    this.materiaService.getPagination(this.paginaRest, this.pageSize)
+  public getPagination(){
+    this.materiaService.getPagination(this.paginaRest, this.pageSize, this.nomeMateriaContains)
       .subscribe(
         (paginationData : any) => {
           // this console is only for debbuging
           console.log("Dados da paginação:");
           console.log(paginationData);
+          console.log("valor pagesize no inicio: " + this.pageSize);
 
           // The data from pagination are inside of a content
           this.materias = paginationData.content;
@@ -53,7 +60,30 @@ export class MateriaListComponent implements OnInit {
     this.paginaNgx = evento;
     this.paginaRest = this.paginaNgx - 1;
     this.getPagination();
+    console.log("pageSize: " + this.pageSize)
   }
+
+  onClickApplyFilter(){
+    this.pageSize = this.pageSizeUpdated;
+    this.getPagination();
+  }
+
+  // onClickSearchByName(){
+  //   this.materiaService.getPagination(this.paginaRest, this.pageSize, this.nomeMateriaContains)
+  //     .subscribe(
+  //       (paginationData : any) => {
+  //         // this console is only for debbuging
+  //         console.log("Dados da paginação:");
+  //         console.log(paginationData);
+  //         console.log("valor pagesize no inicio: " + this.pageSize);
+
+  //         // The data from pagination are inside of a content
+  //         this.materias = paginationData.content;
+  //         this.total = paginationData.totalElements;
+          
+  //       }
+  //     );
+  // }
 
   onVerDetalheMateria(materiaId : number){
     this.materiaService.getById(materiaId)
