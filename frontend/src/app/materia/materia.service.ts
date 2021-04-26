@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,30 +9,33 @@ export class MateriaService {
 
   // um service por module
 
+  uri : string = `${environment.API_URI}/materias`;
+   //uri : string = {environment.API_URI + '/materias';
+
 
   constructor(private httpService : HttpClient) { }
 
 
   public getAll(){
-    return this.httpService.get("http://localhost:8081/materias");
+    return this.httpService.get(this.uri);
   }
 
   public getById(materiaId : number){
-    return this.httpService.get("http://localhost:8081/materias/"+materiaId);
+    return this.httpService.get(`${this.uri}/${materiaId}`);
   }
 
   // see if any will bring some problem in the future
   public save(newMateria : any){
-    return this.httpService.post("http://localhost:8081/materias", newMateria);
+    return this.httpService.post(this.uri, newMateria);
   }
 
   // see if any will bring some problem in the future
   public update(materiaId : number, updatedMateria : any){
-    return this.httpService.patch("http://localhost:8081/materias/"+ materiaId, updatedMateria);
+    return this.httpService.patch(`${this.uri}/${materiaId}`, updatedMateria);
   }
 
   public delete(materiaId : number){
-    return this.httpService.delete("http://localhost:8081/materias/"+ materiaId);
+    return this.httpService.delete(`${this.uri}/${materiaId}`);
   }
 
   public getPagination(pagina, registros = 2, nomeMateriaContains : string = "nenhumaMateriaSelecionada"){
@@ -44,8 +48,5 @@ export class MateriaService {
     //http://localhost:8081/materias/paginacao/?pagina=1&registros=1
   }
 
-  // public getaPagination(pagina, registrosPorPagina = 2){
-  //   return this.httpService.get(`${this.uri}/paginacao?pagina=${pagina}&registros=${registrosPorPagina}`);
-  // }
 
 }

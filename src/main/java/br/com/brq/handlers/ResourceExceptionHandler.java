@@ -47,8 +47,7 @@ public class ResourceExceptionHandler {
 				"Objeto Não Encontrado", 
 				e.getMessage(), 
 				request.getRequestURI()
-		);
-		LocalDateTime.now().getMonth();
+		);		
 		return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(error);
 	}
 }
