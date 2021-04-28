@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FieldDebugComponent } from './field-debug/field-debug.component';
 import { RouterModule } from '@angular/router';
 import { FilterResourceComponent } from './filter-resource/filter-resource.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -23,6 +24,7 @@ import { FilterResourceComponent } from './filter-resource/filter-resource.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
 
     RouterModule
   ],
@@ -35,7 +37,8 @@ import { FilterResourceComponent } from './filter-resource/filter-resource.compo
 
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule   
+    HttpClientModule,
+    ToastrModule
 
     
   ]

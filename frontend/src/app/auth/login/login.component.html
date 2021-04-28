@@ -1,0 +1,25 @@
+<form [formGroup]="meuForm" (submit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="text" class="form-control" formControlName="email" placeholder="Email do Usuário">
+    </div>
+
+    <app-field-error
+        [isShow]="isValid('email')"
+        [messageError]="'Email obrigatório'"
+    > </app-field-error>
+  
+    <div class="form-group">
+      <label >Senha</label>
+      <input type="password" class="form-control" formControlName="senha" placeholder="Senha do Usuário">
+    </div>
+
+    <app-field-error
+        [isShow]="isValid('senha')"
+        [messageError]="'Senha obrigatória'"
+    > </app-field-error>
+  
+    <button type="submit" [disabled]="meuForm.valid == false" class="btn btn-primary">Logar</button>
+  
+  </form>
