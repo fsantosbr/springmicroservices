@@ -22,38 +22,38 @@ export class MateriaFormComponent implements OnInit {
     private activatedRoute : ActivatedRoute,
     private router : Router
   ) { 
-    this.meuFormMateria = this.formBuilder.group(
-      { 
-        nome : [ null, [ Validators.required, Validators.maxLength(15), Validators.minLength(3) ]],
-        professor : [ null, [Validators.required, Validators.maxLength(25), Validators.minLength(3) ]]
-      }
-    );
+    // this.meuFormMateria = this.formBuilder.group(
+    //   { 
+    //     nome : [ null, [ Validators.required, Validators.maxLength(15), Validators.minLength(3) ]],
+    //     professor : [ null, [Validators.required, Validators.maxLength(25), Validators.minLength(3) ]]
+    //   }
+    // );
 
-    // only for test
-    console.log(this.meuFormMateria);
-    console.log(this.activatedRoute);
+    // // only for test
+    // console.log(this.meuFormMateria);
+    // console.log(this.activatedRoute);
 
-    // identifying the router ('/materias' or '/materias/id'). To create or Edit the entity
-    this.activatedRoute.params
-      .subscribe(
-        (dataRoute) => {
-          //only to see the route in the console
-          console.log(dataRoute);
+    // // identifying the router ('/materias' or '/materias/id'). To create or Edit the entity
+    // this.activatedRoute.params
+    //   .subscribe(
+    //     (dataRoute) => {
+    //       //only to see the route in the console
+    //       console.log(dataRoute);
 
-          if (dataRoute.materiaId){
-            this.isEdicao = true;
-            this.materiaId = dataRoute.materiaId;
+    //       if (dataRoute.materiaId){
+    //         this.isEdicao = true;
+    //         this.materiaId = dataRoute.materiaId;
 
-            // loading the entity and passing it to the form (macthing)
-            this.materiaService.getById(dataRoute.materiaId)
-              .subscribe(
-                (materiaLoaded) => {
-                  this.meuFormMateria.patchValue(materiaLoaded);
-                }
-              );
-          }
-        }
-      );
+    //         // loading the entity and passing it to the form (macthing)
+    //         this.materiaService.getById(dataRoute.materiaId)
+    //           .subscribe(
+    //             (materiaLoaded) => {
+    //               this.meuFormMateria.patchValue(materiaLoaded);
+    //             }
+    //           );
+    //       }
+    //     }
+    //   );
   }
 
 
@@ -88,7 +88,45 @@ export class MateriaFormComponent implements OnInit {
     return (!this.meuFormMateria.get(fieldName).valid && this.meuFormMateria.get(fieldName).touched);
   }
 
-  ngOnInit(): void {
+  ngOnInit(
+    // private materiaService : MateriaService,
+    // private formBuilder : FormBuilder,
+    // private activatedRoute : ActivatedRoute,
+    // private router : Router
+
+  ): void {
+    this.meuFormMateria = this.formBuilder.group(
+      { 
+        nome : [ null, [ Validators.required, Validators.maxLength(15), Validators.minLength(3) ]],
+        professor : [ null, [Validators.required, Validators.maxLength(25), Validators.minLength(3) ]]
+      }
+    );
+
+    // only for test
+    console.log(this.meuFormMateria);
+    console.log(this.activatedRoute);
+
+    // identifying the router ('/materias' or '/materias/id'). To create or Edit the entity
+    this.activatedRoute.params
+      .subscribe(
+        (dataRoute) => {
+          //only to see the route in the console
+          console.log(dataRoute);
+
+          if (dataRoute.materiaId){
+            this.isEdicao = true;
+            this.materiaId = dataRoute.materiaId;
+
+            // loading the entity and passing it to the form (macthing)
+            this.materiaService.getById(dataRoute.materiaId)
+              .subscribe(
+                (materiaLoaded) => {
+                  this.meuFormMateria.patchValue(materiaLoaded);
+                }
+              );
+          }
+        }
+      );
   }
 
 }

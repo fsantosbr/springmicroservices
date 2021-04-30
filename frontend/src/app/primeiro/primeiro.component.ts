@@ -9,6 +9,12 @@ export class PrimeiroComponent implements OnInit {
 
   constructor() { }
 
+  obj = {
+    "id" : 1,
+    "nome" : "fabrizio"
+  }
+
+
   ngOnInit(): void {
   }
 

@@ -8,6 +8,7 @@ import { FieldDebugComponent } from './field-debug/field-debug.component';
 import { RouterModule } from '@angular/router';
 import { FilterResourceComponent } from './filter-resource/filter-resource.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CepPipe } from './pipes/cep.pipe';
 
 
 
@@ -16,7 +17,8 @@ import { ToastrModule } from 'ngx-toastr';
     FieldErrorComponent,
     NavbarComponent,
     FieldDebugComponent,
-    FilterResourceComponent
+    FilterResourceComponent,
+    CepPipe
   ],
 
   imports: [
@@ -34,7 +36,8 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     FieldDebugComponent,
     FilterResourceComponent,
-
+    CepPipe,
+    
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

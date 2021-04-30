@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { MateriaService } from '../materia.service';
 
 @Component({
@@ -32,15 +33,15 @@ export class MateriaListComponent implements OnInit {
   // End of the variables to manage pagination
 
 
-  constructor(private materiaService : MateriaService) {
-    this.getPagination();
-   }
+  constructor(private materiaService : MateriaService) { }
 
   ngOnInit(): void {
+    this.getPagination();
   }
 
   public getPagination(){
     this.materiaService.getPagination(this.paginaRest, this.pageSize, this.nomeMateriaContains)
+    .pipe( take(1) )
       .subscribe(
         (paginationData : any) => {
           // this console is only for debbuging

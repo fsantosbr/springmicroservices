@@ -1,1 +1,23 @@
-<p>primeiro works!</p>
+
+<p> {{ 'alterar meu texto' | uppercase | lowercase  }}  </p>
+
+<p>
+    {{ obj | json }}
+</p>
+
+<p>
+    <!-- {{ 9000.9 | currency:'BRL':'symbol':'1.2-2':'br' }} -->
+</p>
+
+<p>
+    {{ 4000 | currency:'BRL':'symbol':'0.2-2'}}
+</p>
+
+<p>
+    {{ '2021/04/29' | date : 'dd/MM/yyyy' }}
+</p>
+
+
+<p>
+    {{ 03030433 | cep }}
+</p>
