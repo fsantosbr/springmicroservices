@@ -64,10 +64,19 @@ export class MateriaListComponent implements OnInit {
     console.log("pageSize: " + this.pageSize)
   }
 
-  onClickApplyFilter(){
+  onClickApplyFilter(){    
     this.pageSize = this.pageSizeUpdated;
     this.getPagination();
   }
+
+
+  onClickApplyFilter2(evento){
+    console.log(evento);
+    this.pageSizeUpdated = evento;
+    this.pageSize = this.pageSizeUpdated;
+    this.getPagination();
+  }
+
 
   // onClickSearchByName(){
   //   this.materiaService.getPagination(this.paginaRest, this.pageSize, this.nomeMateriaContains)

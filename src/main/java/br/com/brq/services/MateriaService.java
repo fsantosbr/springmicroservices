@@ -79,8 +79,7 @@ public class MateriaService {
 		if (listModel.isEmpty()) {
 			throw new ObjetoNaoEncontradoException("Nenhuma matéria encontrada com o parâmetro informado");
 			// here: why was my message fully skipped?
-		}
-		
+		}		
 		return listModel.stream().map( x -> x.toDto() )
         .collect(Collectors.toCollection(ArrayList::new));		
 	}
@@ -90,16 +89,14 @@ public class MateriaService {
 
 		Page<MateriaModel> pageModel;
 		
-		if (procurarMateria.contentEquals("nenhumaMateriaSelecionada")) {
+		if (procurarMateria.contentEquals("")) {
 			PageRequest pageRequest = PageRequest.of(pagina, registros);
 			pageModel = this.materiaRepository.findAll(pageRequest);
 		}
 		else {
 			Pageable pageRequest = PageRequest.of(pagina, registros);
 			pageModel = this.materiaRepository.findAllByNomeContains(procurarMateria, pageRequest);
-		}
-				
-		System.out.println(pageModel);		
+		}	
 		
 		Page<MateriaDTO> pageDTO = pageModel.map(
 				new Function<MateriaModel, MateriaDTO>(){

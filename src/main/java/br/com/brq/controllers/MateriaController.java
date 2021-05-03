@@ -56,7 +56,7 @@ public class MateriaController {
 	public ResponseEntity<Page<MateriaDTO>> paginacao(
 				@RequestParam(name="pagina", defaultValue = "0") int pagina,
 				@RequestParam(name="registros", defaultValue = "10") int registros,
-				@RequestParam(name="procurar", defaultValue = "nenhumaMateriaSelecionada") String procurarMateria
+				@RequestParam(name="procurar", defaultValue = "") String procurarMateria
 			) {		
 		
 		Page<MateriaDTO> pageDTO = this.materiaService.paginacao(pagina, registros, procurarMateria);		
